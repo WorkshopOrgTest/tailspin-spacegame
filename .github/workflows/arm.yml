@@ -11,6 +11,6 @@ jobs:
         creds: ${{ secrets.AZURE_CREDS }}
     - uses: azure/arm-deploy@v1
       with:
-        resourceGroupName: github-action-arm-rg
+        resourceGroupName: tailspin-demo
         template: ./azuredeploy.json
         parameters: ./azuredeploy.parameters.json
