@@ -12,5 +12,5 @@ jobs:
     - uses: azure/arm-deploy@v1
       with:
         resourceGroupName: tailspin-demo
-        template: tailspin-spacegame/Deployments/arm-templates/azuredeploy.json
-        parameters: tailspin-spacegame/Deployments/arm-templates/azuredeploy.parameters.json
+        template: Deployments/arm-templates/azuredeploy.json
+        parameters: Deployments/arm-templates/azuredeploy.parameters.json
