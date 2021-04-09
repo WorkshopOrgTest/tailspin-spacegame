@@ -1,16 +1,19 @@
-on: [push]
-name: AzureARM-IaaC
+name: AzureARM-CICD
+on:
+  push:
+    branches: [arm-keyvault]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+    environment: ARM-KEYVAULT
     steps:
     - uses: actions/checkout@v2
     - uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDS }}
+        creds: ${{ secrets.AZ_ARM_CREDS }}
     - uses: azure/arm-deploy@v1
       with:
-        resourceGroupName: tailspin-demo
+        resourceGroupName: tailspin-arm
         template: Deployments/arm-templates/azuredeploy.json
-        parameters: Deployments/arm-templates/azuredeploy.parameters.json
+      id: arm_deploy
