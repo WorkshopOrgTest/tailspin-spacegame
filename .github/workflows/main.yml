@@ -6,10 +6,6 @@ on:
     - .github/**
   workflow_dispatch:
 
-env:
-  API_APP_NAME: 'leaderboardsgh'
-  WEB_APP_NAME: 'spacewebgh'
-
 jobs:
 
 
@@ -46,7 +42,7 @@ jobs:
         run: dotnet nuget push ${{github.workspace}}\Tailspin.SpaceGame.Web\bin\Debug\*.nupkg --source "github" --skip-duplicate
       
       - name: Add Project
-        run: nuget install tailspin -OutputDirectory ./packages
+        run: dotnet add ./Tailspin.SpaceGame.Web package tailspin
       
       
 #       - name: Upload a Build Artifact
