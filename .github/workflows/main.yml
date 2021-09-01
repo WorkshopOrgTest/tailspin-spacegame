@@ -33,7 +33,7 @@ jobs:
         working-directory: ./Tailspin.SpaceGame.Web
         
       - name: Publish Package
-        run: dotnet nuget push ${{github.workspace}}\Tailspin.SpaceGame.Web\bin\Debug\*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "github" --Skip-Duplicates
+        run: dotnet nuget push ${{github.workspace}}\Tailspin.SpaceGame.Web\bin\Debug\*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "github" --skip-duplicate
       
 #       - name: Publish
 #         run: dotnet publish --no-restore -c Release
