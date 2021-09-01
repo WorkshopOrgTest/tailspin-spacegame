@@ -6,3 +6,5 @@ automate_branch_rules_cr_pat:
 88a5d8a082ec7bb9de2b4a30fdb46f2ada8c6259
 
 az ad sp create-for-rbac --name "canarystailspin" --sdk-auth --role contributor --scopes /subscriptions/33a54cdd-4719-421e-b20f-582606580277
+
+Secret Text
