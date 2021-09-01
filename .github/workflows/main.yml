@@ -36,7 +36,7 @@ jobs:
         run: dotnet nuget push ${{github.workspace}}\Tailspin.SpaceGame.Web\bin\Debug\*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "github" --skip-duplicate
       
       - name: Add Project
-        run: dotnet add package tailspin -s "github"
+        run: nuget install tailspin -OutputDirectory ./packages
       
       
 #       - name: Upload a Build Artifact
