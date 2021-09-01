@@ -26,7 +26,14 @@ jobs:
       
       - uses: actions/checkout@master
       - uses: nuget/setup-nuget@v1
-        
+      
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          files: '["**/nuget.config"]'
+        env:
+          USERNAME: ${{secrets.USERNAME}}
+          TOKEN: ${{secrets.GITHUB_TOKEN}}
+
       - name: Restore dependencies
         run: dotnet restore
         working-directory: ./Tailspin.SpaceGame.Web
@@ -36,7 +43,7 @@ jobs:
         working-directory: ./Tailspin.SpaceGame.Web
         
       - name: Publish Package
-        run: dotnet nuget push ${{github.workspace}}\Tailspin.SpaceGame.Web\bin\Debug\*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "github" --skip-duplicate
+        run: dotnet nuget push ${{github.workspace}}\Tailspin.SpaceGame.Web\bin\Debug\*.nupkg --source "github" --skip-duplicate
       
       - name: Add Project
         run: nuget install tailspin -OutputDirectory ./packages
