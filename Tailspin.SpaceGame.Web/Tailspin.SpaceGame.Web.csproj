@@ -6,7 +6,7 @@
     <UserSecretsId>e86cfa6b-b26a-4619-b72c-b38b428350da</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <PackageId>tailspin</PackageId>
-    <Version>3.1.0</Version>
+    <Version>3.2.0</Version>
     <Authors>dev</Authors>
     <Company>Canarys</Company>
     <IsPackable>true</IsPackable>
