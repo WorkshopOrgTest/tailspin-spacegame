@@ -11,6 +11,7 @@
     <Company>Canarys</Company>
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.ecanarys.com/vaishnavplayground/tailspin-demo</RepositoryUrl>
     </PropertyGroup>
 
   <ItemGroup>
