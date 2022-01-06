@@ -13,7 +13,7 @@ env:
 jobs:
     build_api_app:
       name: 🧪 Build API App
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       
       steps:
       - uses: actions/checkout@v2
@@ -43,7 +43,7 @@ jobs:
 
     build_web_app:
       name: 🧪 Build Web App
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       steps:
       - uses: actions/checkout@v2
         
@@ -79,7 +79,7 @@ jobs:
       
     test_api_app:
       name: Unit Tests API
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       needs: [build_api_app]
       steps:
       - uses: actions/checkout@v2
@@ -103,7 +103,7 @@ jobs:
     
     test_web_app:
       name: Unit Tests Web
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       needs: [build_web_app ]
       steps:
       - uses: actions/checkout@v2
@@ -127,11 +127,11 @@ jobs:
     
     api_app_deploy:
       name: 📦 Deploy APIs
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       environment: 
         name: API App
         url: https://${{env.API_APP_NAME}}.azurewebsites.net/api/Leaderboard
-      needs: [build_api_app]
+      needs: [build_api_app,test_api_app]
       steps:
         
       - name: Download a Build Artifact
@@ -152,11 +152,11 @@ jobs:
 
     web_app_deploy:
       name: 📦 Deploy FrontEnd
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       environment: 
         name: Web App
         url: https://${{env.WEB_APP_NAME}}.azurewebsites.net/
-      needs: [build_web_app]
+      needs: [build_web_app,test_web_app]
       
       steps:  
       - name: Download a Build Artifact
