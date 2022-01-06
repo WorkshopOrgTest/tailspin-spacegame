@@ -1,0 +1,62 @@
+name: Spacegame.Web.onprem
+on:
+ 
+  workflow_dispatch:
+
+env:
+  API_APP_NAME: 'leaderboardgh'
+  WEB_APP_NAME: 'spacewebgh'
+
+jobs:
+
+    build_web_app:
+      name: 🧪 Build Web App
+      runs-on: windows-latest
+      steps:
+      - uses: actions/checkout@v2
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.301
+          
+      - name: Configure App Settings
+        uses: cschleiden/replace-tokens@v1
+        with: 
+          files: '["Tailspin.SpaceGame.Web/appsettings.json"]'
+        env:
+          LEADERBOARD_API_URL: https://${{env.API_APP_NAME}}.azurewebsites.net/api/Leaderboard
+        
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: ./Tailspin.SpaceGame.Web
+        
+      - name: Build
+        run: dotnet build --no-restore
+        working-directory: ./Tailspin.SpaceGame.Web
+      
+      - name: Publish
+        run: dotnet publish --no-restore -c Release
+        working-directory: ./Tailspin.SpaceGame.Web
+      
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.1
+        with:
+          name: spacegameweb
+          path: ./Tailspin.SpaceGame.Web/bin/Release/netcoreapp3.1/publish/
+  
+    
+    web_app_deploy:
+      name: 📦 Deploy APIs
+      runs-on: windows-latest
+      environment: 
+        name: API App
+        url: https://${{env.API_APP_NAME}}.azurewebsites.net/api/Leaderboard
+      needs: [build_web_app]
+      steps:
+        
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.7
+        with:
+          name: spacegameweb
+          path: D:/tailspin
