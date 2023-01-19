@@ -10,7 +10,7 @@
         },
         "skuTier": {
             "type": "string"
-        }
+        } 
     },
     "variables": {
         "resourceNamePrefix": "[take(uniqueString(resourceGroup().id), 3)]",
