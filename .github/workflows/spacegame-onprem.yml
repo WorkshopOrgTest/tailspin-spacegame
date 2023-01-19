@@ -48,7 +48,7 @@ jobs:
     
     web_app_deploy:
       name: 📦 Deploy Web
-      runs-on: windows-10
+      runs-on: win2019
       needs: [build_web_app]
       steps:
         
