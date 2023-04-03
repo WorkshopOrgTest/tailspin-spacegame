@@ -5,7 +5,7 @@ on:
 env:
   DIRECTORY_PATH: .
   PACKAGE_MANAGER: nuget
-  PROJECT_PATH: ${{github.workspace}}
+  PROJECT_PATH: WorkshopOrgTest/tailspin-spacegame
   GITHUB_ACCESS_TOKEN: ${{secrets.PAT}}
 
 jobs:
