@@ -25,11 +25,14 @@ jobs:
         
       - name: Install Bundler
         run: gem install bundler
+      
+      - run: |
+           cd dependabot
+           ls -ltr
           
       - name: run dependabot script 
         run: |
-           cd dependabot
-           ls -ltr
+
            bundle update --bundler
            bundle install
         working-directory: ${{github.workspace}}/dependabot/dependabot-script
