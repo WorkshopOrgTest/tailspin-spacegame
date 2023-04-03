@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
         with: 
-         repo: dependabot/dependabot-script.git
+         repository: dependabot/dependabot-script
          path: dependabot
       - uses: ruby/setup-ruby@v1
         with:
