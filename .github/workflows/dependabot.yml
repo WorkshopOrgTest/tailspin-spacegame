@@ -1,0 +1,36 @@
+name: Spacegame.Web.dep-test
+on:
+  workflow_dispatch:
+
+env:
+  DIRECTORY_PATH: .
+  PACKAGE_MANAGER: nuget
+  PROJECT_PATH: ${{github.workspace}}
+  GITHUB_ACCESS_TOKEN: ${{secrets.PAT}}
+
+jobs:
+   dependabot:
+      name: Dependency Workflow
+      runs-on: ubuntu-latest
+      
+      steps:
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with: 
+         repo: dependabot/dependabot-script.git
+         path: dependabot
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+        
+      - name: Install Bundler
+        run: gem install bundler
+          
+      - name: run dependabot script 
+        run: |
+           bundle update --bundler
+           bundle install
+        working-directory: dependabot/dependabot-script
+        
+      
+ 
