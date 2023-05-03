@@ -1,0 +1,19 @@
+name: CI-Reusable
+
+# Controls when the workflow will run
+on:
+  workflow_call:
+    inputs:
+      repo:
+        required: true
+        type: string
+
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: ${{ inputs.repo }}
+        token: ${{secrets.TOKEN}}
