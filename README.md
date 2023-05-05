@@ -2,7 +2,7 @@
 
 ## New Technical Details Added
 
-Test
+Test Changes
 
 
 [![CodeQL](https://github.com/CanarysPlayground/tailspin-spacegame/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/CanarysPlayground/tailspin-spacegame/actions/workflows/codeql-analysis.yml)<br/>
